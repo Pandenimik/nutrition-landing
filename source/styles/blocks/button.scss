@@ -6,6 +6,7 @@
   color: $text-color-dark;
   text-align: center;
   font-weight: 700;
+  text-wrap: pretty;
 
   background-color: $button-bg-color;
   border-radius: 20px;
@@ -26,4 +27,9 @@
       background-color: $button-bg-color-active;
     }
   }
+}
+
+.button__note {
+  font-weight: 400;
+  opacity: 0.8;
 }

@@ -3,7 +3,7 @@
 
   padding: 25px;
 
-  color: $text-color-dark;
+  color: $text-color;
   text-align: center;
   font-weight: 700;
   text-wrap: pretty;
@@ -16,7 +16,7 @@
     @include hover() {
       @include transition;
 
-      background-color: $button-bg-color-hover;
+      opacity: 0.6;
     }
   }
 
@@ -24,7 +24,7 @@
     @include hover() {
       @include transition;
 
-      background-color: $button-bg-color-active;
+      opacity: 0.3;
     }
   }
 }

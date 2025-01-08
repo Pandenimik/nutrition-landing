@@ -1,5 +1,9 @@
-.header {
-  background-color: #663399;
-  color: #ffffff;
-  padding: 10px 15px;
+.header__avatar {
+  display: block;
+
+  border-radius: 50%;
+}
+
+.header__title {
+  font-size: 24px;
 }

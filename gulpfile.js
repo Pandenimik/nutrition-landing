@@ -153,6 +153,7 @@ export function startServer () {
     cors: true,
     notify: false,
     ui: false,
+    port: 3001,
   }, (err, bs) => {
     bs.addMiddleware('*', (req, res) => {
       res.write(readFileSync(`${PATH_TO_DIST}404.html`));

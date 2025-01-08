@@ -1,1 +1,20 @@
-/* здесь используйте глобальные переменные */
+/* Colors variables */
+/* Palette */
+$white: #ffffff;
+$blue: #00336C;
+
+
+/* Сolor entities */
+$background-color: $blue;
+$text-color: $white;
+
+
+/* Sizes */
+$min-width: 320px;
+$max-width: 820px;
+
+$padding-x: 20px;
+
+/* Others */
+$transition-time: 0.3s;
+

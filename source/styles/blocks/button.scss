@@ -1,0 +1,29 @@
+.button {
+  @include reset-link;
+
+  padding: 25px;
+
+  color: $text-color-dark;
+  text-align: center;
+  font-weight: 700;
+
+  background-color: $button-bg-color;
+  border-radius: 20px;
+  cursor: pointer;
+
+  &:hover {
+    @include hover() {
+      @include transition;
+
+      background-color: $button-bg-color-hover;
+    }
+  }
+
+  &:active {
+    @include hover() {
+      @include transition;
+
+      background-color: $button-bg-color-active;
+    }
+  }
+}

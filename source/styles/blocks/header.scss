@@ -1,3 +1,14 @@
+.header {
+  @include container;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
 .header__avatar {
   display: block;
 
@@ -5,5 +16,13 @@
 }
 
 .header__title {
+  margin: 0;
+
   font-size: 24px;
+}
+
+.header__text {
+  margin: 0;
+
+  text-align: center;
 }

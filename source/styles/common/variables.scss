@@ -2,11 +2,24 @@
 /* Palette */
 $white: #ffffff;
 $blue: #00336C;
+$dark-blue: #000731;
+$georgian-pink: #c70156;
+$krayola: #f35d9c;
+$brilliant-purplish-pink: #ff97cc;
 
 
 /* Сolor entities */
 $background-color: $blue;
 $text-color: $white;
+// $text-color-dark: $dark-blue;
+// $button-bg-color: $brilliant-purplish-pink;
+// $button-bg-color-hover: $krayola;
+// $button-bg-color-active: $georgian-pink;
+$text-color-dark: $white;
+$button-bg-color: $georgian-pink;
+$button-bg-color-hover: $krayola;
+$button-bg-color-active: $brilliant-purplish-pink;
+
 
 
 /* Sizes */

@@ -7,7 +7,122 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="preload" href="#" type="font/woff2" as="font">
   <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="./vendor/slider/itc-slider.css">
+
   <script src="scripts/index.js" defer></script>
+  <script src="./vendor/slider/itc-slider.js" defer></script>
+
+  <style>
+    /* Стили модального окна */
+    .modal {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1050;
+      opacity: 0;
+      -webkit-transition: opacity 400ms ease-in;
+      -moz-transition: opacity 400ms ease-in;
+      transition: opacity 400ms ease-in;
+      pointer-events: none;
+    }
+
+    .modal-open {
+      opacity: 1;
+      pointer-events: auto;
+      overflow-y: auto;
+    }
+
+    .modal-dialog {
+      position: relative;
+      width: auto;
+      max-height: 50%;
+      margin: 10px;
+    }
+
+    @media (min-width: 576px) {
+      .modal-dialog {
+        max-width: 600px;
+        margin: 30px auto;
+      }
+    }
+
+    .modal-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background-color: #ffffff;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      border: 1px solid rgba(0, 0, 0, .2);
+      border-radius: .3rem;
+      outline: 0;
+    }
+
+    @media (min-width: 768px) {
+      .modal-content {
+        -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+      }
+    }
+
+    .modal-header {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      padding: 15px;
+      border-bottom: 1px solid #eceeef;
+    }
+
+    .modal-title {
+      margin-top: 0;
+      margin-bottom: 0;
+      line-height: 1.5;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+
+    .close {
+      float: right;
+      font-family: sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+      color: red;
+      text-shadow: 0 1px 0 #fff;
+      opacity: .5;
+      text-decoration: none;
+    }
+
+    .close:focus,
+    .close:hover {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+      opacity: .75;
+    }
+
+    .modal-body {
+      position: relative;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      padding: 15px;
+      overflow: auto;
+    }
+  </style>
 </head>
 
 <body class="page__body">
@@ -28,7 +143,51 @@
     <a class="button" href="https://www.instagram.com/ol.yakovleva?igsh=MW5ycjRuNXpzdnM1dA==">Instagram</a>
     <a class="button" href="#">Услуги</a>
     <a class="button" href="https://disk.yandex.ru/d/1uYu2YehzCPPbQ">Договор оферта</a>
+    <a class="button" data-target="modal-1" href="#">Результаты клиентов</a>
   </main>
+
+  <div class="container">
+    <div style="text-align: center;">
+      <!-- <a class="button" data-target="modal-1" href="#">Открыть модальное окно 1</a> -->
+    </div>
+
+    <div class="modal" id="modal-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Слайдер в модальном окне</h3>
+            <a class="close" data-target="close" href="#" title="Close">×</a>
+          </div>
+          <div class="modal-body">
+            <div class="itc-slider itc-slider-1"><!-- Слайдер (начало) -->
+              <div class="itc-slider-wrapper">
+                <div class="itc-slider-items">
+                  <div class="itc-slider-item">
+                    <img src="./images/example.jpg" alt="">
+                  </div>
+                  <div class="itc-slider-item">
+                    <img src="./images/example.jpg" alt="">
+                  </div>
+                  <div class="itc-slider-item">
+                    <img src="./images/example.jpg" alt="">
+                  </div>
+                  <div class="itc-slider-item">
+                    <img src="./images/example.jpg" alt="">
+                  </div>
+                  <div class="itc-slider-item">
+                    <img src="./images/example.jpg" alt="">
+                  </div>
+                </div>
+              </div>
+              <button class="itc-slider-btn itc-slider-btn-prev"></button>
+              <button class="itc-slider-btn itc-slider-btn-next"></button>
+            </div><!-- Слайдер (конец) -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </body>
 
 </html>

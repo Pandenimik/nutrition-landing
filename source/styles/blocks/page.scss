@@ -12,6 +12,10 @@
   font-weight: 400;
   color: $text-color;
 
-  background-color: $background-color;
-  background-image: url("../../images/bg.jpg");
+  // background-color: $background-color;
+  // background-image: url("../../images/bg-1.jpg");
+  // background-repeat: no-repeat;
+  // background-position: cover;
+
+  background: $background-color url("../../images/bg-2.jpg") no-repeat top center / cover;
 }

@@ -1,24 +1,17 @@
+/* Fonts variables */
+$font-family-primary: ("Oswald", "Arial", sans-serif);
+$font-family-secondary: ("Roboto", "Arial", sans-serif);
+
 /* Colors variables */
 /* Palette */
 $white: #ffffff;
-$blue: #00336c;
-$dark-blue: #000731;
-$georgian-pink: #c70156;
-$krayola: #f35d9c;
-$brilliant-purplish-pink: #ff97cc;
-
 $green-grey:  #4e5042;
 $green-balck: #1b201a;
 
 
 /* Сolor entities */
-$background-color: $green-grey;
 $text-color: $white;
-// $text-color-dark: $dark-blue;
-// $button-bg-color: $brilliant-purplish-pink;
-// $button-bg-color-hover: $krayola;
-// $button-bg-color-active: $georgian-pink;
-
+$background-color: $green-grey;
 $button-bg-color: $green-balck;
 
 /* Sizes */

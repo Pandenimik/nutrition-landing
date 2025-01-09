@@ -8,10 +8,10 @@
   min-height: 100%;
   margin: 0;
 
-  font-family: "Arial", "Helvetica", sans-serif;
-  font-style: normal;
+  font-family: $font-family-secondary;
   font-weight: 400;
   color: $text-color;
 
   background-color: $background-color;
+  background-image: url("../../images/bg.jpg");
 }

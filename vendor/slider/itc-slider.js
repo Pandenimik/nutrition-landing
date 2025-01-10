@@ -8,17 +8,17 @@
  */
 
 class ItcSlider {
-  static #EL_WRAPPER = 'wrapper';
-  static #EL_ITEMS = 'items';
-  static #EL_ITEM = 'item';
-  static #EL_ITEM_ACTIVE = 'item-active';
-  static #EL_INDICATOR = 'indicator';
-  static #EL_INDICATOR_ACTIVE = 'indicator-active';
-  static #BTN_PREV = 'btn-prev';
-  static #BTN_NEXT = 'btn-next';
-  static #BTN_HIDE = 'btn-hide';
-  static #TRANSITION_NONE = 'transition-none';
-  static #SWIPE_THRESHOLD = 20;
+  static EL_WRAPPER = 'wrapper';
+  static EL_ITEMS = 'items';
+  static EL_ITEM = 'item';
+  static EL_ITEM_ACTIVE = 'item-active';
+  static EL_INDICATOR = 'indicator';
+  static EL_INDICATOR_ACTIVE = 'indicator-active';
+  static BTN_PREV = 'btn-prev';
+  static BTN_NEXT = 'btn-next';
+  static BTN_HIDE = 'btn-hide';
+  static TRANSITION_NONE = 'transition-none';
+  static SWIPE_THRESHOLD = 20;
 
   static #instances = [];
 
@@ -28,6 +28,7 @@ class ItcSlider {
       const options = Object.defineProperty({}, 'passive', {
         get() {
           passiveSupported = true;
+          return false; //Добавлено для
         },
       });
       window.addEventListener('testPassiveListener', null, options);
@@ -51,12 +52,12 @@ class ItcSlider {
     this.#state = {
       prefix, // префикс для классов
       el, // элемент который нужно активировать как ItcSlider
-      elWrapper: el.querySelector(`.${prefix}${this.constructor.#EL_WRAPPER}`), // элемент с #CLASS_WRAPPER
-      elItems: el.querySelector(`.${prefix}${this.constructor.#EL_ITEMS}`), // элемент, в котором находятся слайды
-      elListItem: el.querySelectorAll(`.${prefix}${this.constructor.#EL_ITEM}`), // список элементов, являющиеся слайдами
-      btnPrev: el.querySelector(`.${prefix}${this.constructor.#BTN_PREV}`), // кнопка, для перехода к предыдущему слайду
-      btnNext: el.querySelector(`.${prefix}${this.constructor.#BTN_NEXT}`), // кнопка, для перехода к следующему слайду
-      btnClassHide: prefix + this.constructor.#BTN_HIDE, // класс для скрытия кнопки
+      elWrapper: el.querySelector(`.${prefix}${this.constructor.EL_WRAPPER}`), // элемент с #CLASS_WRAPPER
+      elItems: el.querySelector(`.${prefix}${this.constructor.EL_ITEMS}`), // элемент, в котором находятся слайды
+      elListItem: el.querySelectorAll(`.${prefix}${this.constructor.EL_ITEM}`), // список элементов, являющиеся слайдами
+      btnPrev: el.querySelector(`.${prefix}${this.constructor.BTN_PREV}`), // кнопка, для перехода к предыдущему слайду
+      btnNext: el.querySelector(`.${prefix}${this.constructor.BTN_NEXT}`), // кнопка, для перехода к следующему слайду
+      btnClassHide: prefix + this.constructor.BTN_HIDE, // класс для скрытия кнопки
       exOrderMin: 0,
       exOrderMax: 0,
       exItemMin: null,
@@ -163,8 +164,8 @@ class ItcSlider {
 
   dispose() {
     this.#detachEvents();
-    const transitionNoneClass = this.#state.prefix + this.constructor.#TRANSITION_NONE;
-    const activeClass = this.#state.prefix + this.constructor.#EL_ITEM_ACTIVE;
+    const transitionNoneClass = this.#state.prefix + this.constructor.TRANSITION_NONE;
+    const activeClass = this.#state.prefix + this.constructor.EL_ITEM_ACTIVE;
     this.#autoplay('stop');
     this.#state.elItems.classList.add(transitionNoneClass);
     this.#state.elItems.style.transform = '';
@@ -172,14 +173,15 @@ class ItcSlider {
       el.style.transform = '';
       el.classList.remove(activeClass);
     });
-    const selIndicators = `${this.#state.prefix}${this.constructor.#EL_INDICATOR_ACTIVE}`;
+    const selIndicators = `${this.#state.prefix}${this.constructor.EL_INDICATOR_ACTIVE}`;
     document.querySelectorAll(`.${selIndicators}`).forEach((el) => {
       el.classList.remove(selIndicators);
     });
+    // eslint-disable-next-line no-unused-expressions
     this.#state.elItems.offsetHeight;
     this.#state.elItems.classList.remove(transitionNoneClass);
-    const index = this.constructor.#instances.findIndex((el) => el.target === this.#state.el);
-    this.constructor.#instances.splice(index, 1);
+    const index = this.constructor.instances.findIndex((el) => el.target === this.#state.el);
+    this.constructor.instances.splice(index, 1);
   }
 
   #onClick(e) {
@@ -189,8 +191,8 @@ class ItcSlider {
     if (!(e.target.closest('.itc-slider-btn') || e.target.closest('.itc-slider-indicators'))) {
       return;
     }
-    const classBtnPrev = this.#state.prefix + this.constructor.#BTN_PREV;
-    const classBtnNext = this.#state.prefix + this.constructor.#BTN_NEXT;
+    const classBtnPrev = this.#state.prefix + this.constructor.BTN_PREV;
+    const classBtnNext = this.#state.prefix + this.constructor.BTN_NEXT;
     this.#autoplay('stop');
     if (e.target.closest(`.${classBtnPrev}`) || e.target.closest(`.${classBtnNext}`)) {
       this.#state.direction = e.target.closest(`.${classBtnPrev}`) ? 'prev' : 'next';
@@ -199,6 +201,7 @@ class ItcSlider {
       const index = parseInt(e.target.dataset.slideTo, 10);
       this.#moveTo(index);
     }
+    // eslint-disable-next-line no-unused-expressions
     this.#config.loop ? this.#autoplay() : null;
   }
 
@@ -271,19 +274,19 @@ class ItcSlider {
       }
     }
     const value = (diffPosX / this.#state.width) * 100;
-    const transitionNoneClass = this.#state.prefix + this.constructor.#TRANSITION_NONE;
+    const transitionNoneClass = this.#state.prefix + this.constructor.TRANSITION_NONE;
     this.#state.elItems.classList.remove(transitionNoneClass);
-    if (value > this.constructor.#SWIPE_THRESHOLD) {
+    if (value > this.constructor.SWIPE_THRESHOLD) {
       this.#state.direction = 'next';
       let count = 0;
-      while (count <= Math.floor(Math.abs(value) - this.constructor.#SWIPE_THRESHOLD) / 100) {
-        this.#move();
+      while (count <= Math.floor(Math.abs(value) - this.constructor.SWIPE_THRESHOLD) / 100) {
+        this.move();
         count += 1;
       }
-    } else if (value < -this.constructor.#SWIPE_THRESHOLD) {
+    } else if (value < -this.constructor.SWIPE_THRESHOLD) {
       this.#state.direction = 'prev';
       let count = 0;
-      while (count <= Math.floor(Math.abs(value) - this.constructor.#SWIPE_THRESHOLD) / 100) {
+      while (count <= Math.floor(Math.abs(value) - this.constructor.SWIPE_THRESHOLD) / 100) {
         this.#move();
         count += 1;
       }
@@ -324,7 +327,7 @@ class ItcSlider {
         diffPosX /= 4;
       }
     }
-    const transitionNoneClass = this.#state.prefix + this.constructor.#TRANSITION_NONE;
+    const transitionNoneClass = this.#state.prefix + this.constructor.TRANSITION_NONE;
     this.#state.elItems.classList.add(transitionNoneClass);
     const translate = this.#state.translate - diffPosX;
     this.#state.elItems.style.transform = `translate3D(${translate}px, 0px, 0.1px)`;
@@ -435,24 +438,25 @@ class ItcSlider {
   }
 
   #updateClasses() {
-    const activeClass = this.#state.prefix + this.constructor.#EL_ITEM_ACTIVE;
+    const activeClass = this.#state.prefix + this.constructor.EL_ITEM_ACTIVE;
     this.#state.activeItems.forEach((item, index) => {
       if (item) {
         this.#state.elListItem[index].classList.add(activeClass);
       } else {
         this.#state.elListItem[index].classList.remove(activeClass);
       }
-      const elListIndicators = this.#state.el.querySelectorAll(`.${this.#state.prefix}${this.constructor.#EL_INDICATOR}`);
+      const elListIndicators = this.#state.el.querySelectorAll(`.${this.#state.prefix}${this.constructor.EL_INDICATOR}`);
       if (elListIndicators.length && item) {
-        elListIndicators[index].classList.add(`${this.#state.prefix}${this.constructor.#EL_INDICATOR_ACTIVE}`);
+        elListIndicators[index].classList.add(`${this.#state.prefix}${this.constructor.EL_INDICATOR_ACTIVE}`);
       } else if (elListIndicators.length && !item) {
-        elListIndicators[index].classList.remove(`${this.#state.prefix}${this.constructor.#EL_INDICATOR_ACTIVE}`);
+        elListIndicators[index].classList.remove(`${this.#state.prefix}${this.constructor.EL_INDICATOR_ACTIVE}`);
       }
     });
   }
 
   #move() {
     if (this.#state.direction === 'none') {
+      // eslint-disable-next-line no-shadow
       const transform = this.#state.translate;
       this.#state.elItems.style.transform = `translate3D(${transform}px, 0px, 0.1px)`;
       return;
@@ -552,7 +556,7 @@ class ItcSlider {
   }
 
   #reset() {
-    const transitionNoneClass = this.#state.prefix + this.constructor.#TRANSITION_NONE;
+    const transitionNoneClass = this.#state.prefix + this.constructor.TRANSITION_NONE;
     // получаем gap между слайдами
     const gap = parseFloat(getComputedStyle(this.#state.elItems).gap) || 0;
     // ширина одного слайда
@@ -586,3 +590,5 @@ class ItcSlider {
 }
 
 ItcSlider.createInstances();
+
+export {ItcSlider};

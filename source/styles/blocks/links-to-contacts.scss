@@ -1,10 +1,17 @@
-.button {
+.links-to-contacts {
+  @include reset-list;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.links-to-contacts__link {
   @include reset-link;
 
   padding: 25px;
 
-
-  color: $text-color;
+  color: $button-text-color;
   text-align: center;
   font-weight: 400;
   text-wrap: pretty;
@@ -30,7 +37,7 @@
   }
 }
 
-.button__note {
+.links-to-contacts__link-note {
   font-size: 14px;
   font-weight: 400;
   opacity: 0.7;

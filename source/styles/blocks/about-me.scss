@@ -1,4 +1,4 @@
-.header {
+.about-me {
   @include container;
 
   display: flex;
@@ -9,13 +9,13 @@
   padding-bottom: 50px;
 }
 
-.header__avatar {
+.about-me__avatar {
   display: block;
 
   border-radius: 50%;
 }
 
-.header__title {
+.about-me__title {
   margin: 0;
 
   font-family: $font-family-primary;
@@ -23,7 +23,7 @@
   font-size: 24px;
 }
 
-.header__text {
+.about-me__text {
   margin: 0;
 
   text-align: center;

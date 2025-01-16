@@ -1,0 +1,35 @@
+.divider {
+  @include container;
+  display: flex;
+  justify-content: center;
+}
+
+.divider__icon {
+  position: relative;
+  height: 17px;
+  opacity: 1;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -110px;
+
+    display: block;
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(to left, $text-color 0, rgba(255, 255, 255, 0) 100%);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -110px;
+
+    display: block;
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(to right, $text-color 0, rgba(255, 255, 255, 0) 100%);
+  }
+}

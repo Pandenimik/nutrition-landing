@@ -12,6 +12,7 @@
   font-weight: 400;
   color: $text-color;
 
-  background: $background-color url("../../images/bg-mobile.jpg") no-repeat top center / cover fixed;
-  // background: $background-color url("../../images/bg-desktop.jpg") no-repeat top center / cover fixed;
+  background:
+    linear-gradient(rgba($background-color, 0.5), rgba($background-color, 0.5)),
+    url("../../images/bg.jpg") no-repeat top center / cover fixed $background-color;
 }
